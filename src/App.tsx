@@ -1,14 +1,13 @@
 import React, { FC } from 'react';
 import Filters from './features/filters/Filters';
-import { StateProvider } from './store/Store';
+import Vehicles from './features/vehicles/Vehicles';
 import './App.scss';
 
 const App: FC = () => {
     return (
         <div className="App">
-            <StateProvider>
-                <Filters />
-            </StateProvider>
+            <Filters />
+            <Vehicles />
         </div>
     );
 };
