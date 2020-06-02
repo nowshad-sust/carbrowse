@@ -1,11 +1,14 @@
 import React, { FC } from 'react';
+import Filters from './features/filters/Filters';
+import { StateProvider } from './store/Store';
 import './App.scss';
-import Filters from './components/Filters';
 
 const App: FC = () => {
     return (
         <div className="App">
-            <Filters />
+            <StateProvider>
+                <Filters />
+            </StateProvider>
         </div>
     );
 };
