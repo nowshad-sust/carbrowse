@@ -3,6 +3,38 @@
 
     .make,
     .model {
+        display: grid;
         margin: 10px 0;
+        .select,
+        .overlay {
+            grid-area: 1 / 1;
+        }
+
+        .overlay {
+            z-index: 1;
+            display: flex;
+            color: #a94442;
+            background-color: #f2dede;
+            border-color: #ebccd1;
+            padding: 0 15px;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 15px;
+
+            button {
+                color: #fff;
+                background-color: #007bff;
+                border-color: #007bff;
+                font-size: 15px;
+                border-radius: 5px;
+                height: 30px;
+                width: 100px;
+                outline: none;
+            }
+
+            &.hide {
+                display: none;
+            }
+        }
     }
 }

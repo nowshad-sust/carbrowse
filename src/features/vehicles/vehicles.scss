@@ -1,7 +1,18 @@
+@mixin forLargeScreens($media) {
+    @media (min-width: $media/16+em) {
+        @content;
+    }
+}
+
 .vehicles {
     width: 90vw;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-evenly;
     align-items: flex-start;
+
+    @include forLargeScreens(640) {
+        width: 100vw;
+        background: blue;
+    }
 }

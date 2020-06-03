@@ -3,6 +3,7 @@ import Select from 'react-select';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectMake, fetchMakes, setCurrentMake } from './store';
 import { reset } from '../model/store';
+import ErrorOverlay from '../../common/ErrorOverlay';
 
 interface SelectOption {
     value: string;
@@ -25,17 +26,20 @@ const Make: FC = () => {
     };
 
     return (
-        <Select
-            className="make"
-            name="make"
-            options={makes.map((make) => ({ value: make, label: make }))}
-            onChange={onMakeChange}
-            isLoading={isLoading}
-            isDisabled={isLoading || isError}
-            placeholder="Select car make"
-            hasValue={!!currentMake}
-            value={currentMake ? { label: currentMake, value: currentMake } : null}
-        />
+        <div className="make">
+            <Select
+                className="select"
+                name="make"
+                options={makes.map((make) => ({ value: make, label: make }))}
+                onChange={onMakeChange}
+                isLoading={isLoading}
+                isDisabled={isLoading || isError}
+                placeholder="Select car make"
+                hasValue={!!currentMake}
+                value={currentMake ? { label: currentMake, value: currentMake } : null}
+            />
+            <ErrorOverlay isError={isError} text="Failed to fetch makes!" onResolve={() => dispatch(fetchMakes())} />
+        </div>
     );
 };
 
