@@ -11,6 +11,18 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ### Project Kanban board
 https://github.com/nowshad-sust/carbrowse/projects/1
 
+### TODO
+- Improvements
+> - [ ] Add lazy loading for vehicles
+> - [ ] Use a common select for make & model
+- Styling
+> - [ ] Animate vehicles
+> - [ ] Add error transitions
+> - [ ] Moduled Styles i.e.- mixins, use
+- API calls
+> - [ ] Fetch wrapper
+> - [ ] API auto-retry
+
 ## Technical details
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
