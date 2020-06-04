@@ -3,6 +3,7 @@ import Select from 'react-select';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectMake, fetchMakes, setCurrentMake } from './store';
 import { reset } from '../model/store';
+import { setVehicles } from '../../vehicles/store';
 import ErrorOverlay from '../../common/ErrorOverlay';
 
 interface SelectOption {
@@ -19,9 +20,10 @@ const Make: FC = () => {
     }, [dispatch]);
 
     const onMakeChange = (make: SelectOption | SelectOption[] | any) => {
-        // to avoid an extra api call, set the models empty
-        // before updating current make
+        // reset models
         dispatch(reset());
+        // reset vehicles
+        dispatch(setVehicles([]));
         dispatch(setCurrentMake(make.value));
     };
 
@@ -33,8 +35,8 @@ const Make: FC = () => {
                 options={makes.map((make) => ({ value: make, label: make }))}
                 onChange={onMakeChange}
                 isLoading={isLoading}
-                isDisabled={isLoading || isError}
-                placeholder="Select car make"
+                isDisabled={isLoading || isError || makes?.length === 0}
+                placeholder={makes?.length === 0 ? 'Makes is empty!' : 'Select car make'}
                 hasValue={!!currentMake}
                 value={currentMake ? { label: currentMake, value: currentMake } : null}
             />

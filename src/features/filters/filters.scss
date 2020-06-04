@@ -1,13 +1,23 @@
 .filters {
     width: 90vw;
+    padding: 0 10px;
+    position: sticky;
+    top: 0;
+    background-color: whitesmoke;
+    box-shadow: 0 8px 6px -6px #0000004a;
 
     .make,
     .model {
         display: grid;
         margin: 10px 0;
+
         .select,
         .overlay {
             grid-area: 1 / 1;
+        }
+
+        .select > div {
+            border-color: #17a2b8;
         }
 
         .overlay {
@@ -36,5 +46,9 @@
                 display: none;
             }
         }
+    }
+
+    @media (min-width: 640/16+em) {
+        width: 75vw;
     }
 }

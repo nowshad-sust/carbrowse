@@ -4,6 +4,7 @@ import Select from 'react-select';
 import { selectModels, setCurrentModel, fetchModels } from './store';
 import { selectMake } from '../make/store';
 import ErrorOverlay from '../../common/ErrorOverlay';
+import { setVehicles } from '../../vehicles/store';
 
 interface SelectOption {
     value: string;
@@ -22,6 +23,7 @@ const Model: FC = () => {
     }, [dispatch, currentMake]);
 
     const onModelChange = (model: SelectOption | SelectOption[] | any) => {
+        dispatch(setVehicles([]));
         dispatch(setCurrentModel(model.value));
     };
 
@@ -33,8 +35,10 @@ const Model: FC = () => {
                 options={models.map((model) => ({ value: model, label: model }))}
                 onChange={onModelChange}
                 isLoading={isLoading}
-                isDisabled={!currentMake || isLoading || isError}
-                placeholder="Select car model"
+                isDisabled={!currentMake || isLoading || isError || models?.length === 0}
+                placeholder={
+                    !!currentMake && models?.length === 0 ? 'No models found for the make' : 'Select car model'
+                }
                 hasValue={!!currentModel}
                 value={currentModel ? { label: currentModel, value: currentModel } : null}
             />

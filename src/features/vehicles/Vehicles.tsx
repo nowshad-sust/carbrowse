@@ -1,29 +1,17 @@
 import React, { FC, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectVehicles, fetchVehicles, Vehicle } from './store';
+import { selectVehicles, fetchVehicles } from './store';
 import { selectMake } from '../filters/make/store';
 import { selectModels } from '../filters/model/store';
+import ErrorOverlay from '../common/ErrorOverlay';
+import VehicleComponent from './Vehicle';
 
 import './vehicles.scss';
-
-const VehicleComponent = ({
-    make,
-    model,
-    enginePowerPS,
-    enginePowerKW,
-    fuelType,
-    bodyType,
-    engineCapacity,
-}: Vehicle) => (
-    <div className="vehicle">
-        {make} - {model} - {enginePowerPS}
-    </div>
-);
 
 const Vehicles: FC = () => {
     const { currentMake } = useSelector(selectMake);
     const { currentModel } = useSelector(selectModels);
-    const { vehicles } = useSelector(selectVehicles);
+    const { isError, isLoading, vehicles } = useSelector(selectVehicles);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -32,11 +20,25 @@ const Vehicles: FC = () => {
         }
     }, [dispatch, currentMake, currentModel]);
 
+    const Empty = () => (
+        <div className="empty">
+            <p>No results found for your search! Please try with different filters.</p>
+        </div>
+    );
+
     return (
         <div className="vehicles">
-            {vehicles.map((vehicle, index) => (
-                <VehicleComponent key={index} {...vehicle} />
-            ))}
+            <div className="content">
+                {vehicles.map((vehicle, index) => (
+                    <VehicleComponent key={index} {...vehicle} />
+                ))}
+                {currentMake && currentModel && !isError && !isLoading && vehicles?.length === 0 && <Empty />}
+            </div>
+            <ErrorOverlay
+                isError={isError}
+                text="Failed to fetch vehicles!"
+                onResolve={() => currentMake && currentModel && dispatch(fetchVehicles(currentMake, currentModel))}
+            />
         </div>
     );
 };

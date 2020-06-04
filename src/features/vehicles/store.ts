@@ -38,6 +38,9 @@ const vehicleSlice = createSlice({
         setError: (state, action: PayloadAction<boolean>) => {
             state.isError = action.payload;
         },
+        reset: (state, action: PayloadAction<void>) => {
+            state = initialState;
+        },
     },
 });
 
@@ -55,6 +58,7 @@ export const fetchVehicles = (make: Make, model: Model): AppThunk => async (disp
             },
         );
         dispatch(setVehicles(data));
+        dispatch(setError(false));
         dispatch(setLoading(false));
     } catch {
         dispatch(setError(true));
