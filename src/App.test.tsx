@@ -1,9 +1,15 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { shallow, mount, render } from 'enzyme';
+import { Provider } from 'react-redux';
+import { store } from './store';
 import App from './App';
 
-test('renders learn react link', () => {
-    const { getByText } = render(<App />);
-    const linkElement = getByText(/learn react/i);
-    expect(linkElement).toBeInTheDocument();
+describe('App', () => {
+    it('App render is okay', () => {
+        mount(
+            <Provider store={store}>
+                <App />
+            </Provider>,
+        );
+    });
 });
