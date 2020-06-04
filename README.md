@@ -1,4 +1,37 @@
+# Car Finder frontend
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### Features
+- Fetches data for Car makes.
+- User can select a make from a searchable dropdown.
+- Upon a Car make is selected, there will be another dropdown to select models.
+- If both make and models are selected then it shows a list of relavent vehicle information.
+- If any error occurs, it show an option to retry manually.
+
+### Project Kanban board
+https://github.com/nowshad-sust/carbrowse/projects/1
+
+## Technical details
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+### Tooling
+- Typescript
+- React
+- Redux
+- TSlint
+- Jest
+- Enzyme
+- SASS/SCSS
+- Husky
+
+## How to run
+- Make sure you have the API Server running on port `8080`.
+- Prerequites: `NodeJS` && working `npm`.
+- Clone The repository https://github.com/nowshad-sust/carbrowse.git.
+- Go to the project root directory`cd carbrowse`.
+- Run `npm install` to download dependencies.
+- Running `npm start` should open the app in on port `3000` by default.
 
 ## Available Scripts
 
