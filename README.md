@@ -38,12 +38,16 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Husky
 
 ## How to run
-- Make sure you have the API Server running on port `8080`.
 - Prerequites: `NodeJS` && working `npm`.
-- Clone The repository https://github.com/nowshad-sust/carbrowse.git.
-- Go to the project root directory`cd carbrowse`.
-- Run `npm install` to download dependencies.
-- Running `npm start` should open the app in on port `3000` by default.
+- API Server
+> - Download the api server from here - https://www.dropbox.com/s/i3bjhj90ccbtf1w/friday-code-challenge.zip?dl=0.
+> - Unzip and open a terminal inside `apiserver` folder.
+> - Run `node server.js` to start the api server on port `8080`
+- Frontend
+> - Clone The repository https://github.com/nowshad-sust/carbrowse.git.
+> - Go to the project root directory`cd carbrowse`.
+> - Run `npm install` to download dependencies.
+> - Running `npm start` should open the app in on port `3000` by default.
 
 ## Available Scripts
 
